@@ -22,18 +22,8 @@ function createWebpByArrMedia(src, arrMedia, typeImage) {
     }
 }
 
-// function createWebpSrcset(src, arrMedia) {
-//     let res = ""
-//     const { file, webp } = getWebpParams(src)
-//     for (const media of arrMedia.sort((a, b) => a - b)) {
-//         res += `/${src.replace(/\.(jpg|jpeg|png)/, `@${media}.webp`)} ${media}w, `
-//     }
-//     return res.trim().replace(/\,$/, "")
-// }
-
 function createWebpSources(src, arrMedia, typeImage) {
     const arr = []
-    // const { file, webp } = getWebpParams(src, typeImage)
     for (const media of arrMedia.sort((a, b) => a - b)) {
         arr.push(`
             <source srcset="/${src.replace(
@@ -56,9 +46,6 @@ function myPlugin(arrMedia) {
 
                     if (src.startsWith("http") || src.startsWith("http")) return p
 
-                    // const { file, webp } = getWebpParams(src, typeImage)
-
-                    // sharp(file).toFile(webp(), err => console.warn(err))
                     createWebpByArrMedia(src, arrMedia, "avif")
                     createWebpByArrMedia(src, arrMedia, "webp")
 
